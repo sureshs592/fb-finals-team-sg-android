@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
+import android.widget.TextView;
 
 public class UIService extends Service implements OnClickListener {
     
@@ -33,6 +34,10 @@ public class UIService extends Service implements OnClickListener {
         
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
+        
+        //Read the text from the intent
+        String text = intent.getStringExtra("text");
+        ((TextView)overlay.findViewById(R.id.tvContent)).setText(text);
         
         WindowManager.LayoutParams lp = new LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
