@@ -29,8 +29,8 @@ public class MovieCards {
 
     public void renderUI() {
         //Cover image stuff
-//        String url = json.get("image").get("url").asText();
-        String url = json.get("url").asText();
+        String url = json.get("image").get("url").asText();
+//        String url = json.get("url").asText();
         ImageView poster = (ImageView) view.findViewById(R.id.imgPoster);
         ImageLoader.getInstance().displayImage(url, poster);
         
