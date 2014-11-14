@@ -22,14 +22,19 @@ public class GCMService extends IntentService {
         // The getMessageType() intent parameter must be the intent you received
         // in your BroadcastReceiver.
         Log.v("GCM", "*** GCM message received ***");
-
-        Bundle argsToSend = new Bundle();
-        argsToSend.putString("type", extras.getString("type"));
-        argsToSend.putString("payload", extras.getString("payload"));
+        String messageType = gcm.getMessageType(intent);
         
-        Intent uiService = new Intent(this, UIService.class);
-        uiService.putExtras(argsToSend);
-        startService(uiService);
+        if (!extras.isEmpty() &&
+                (GoogleCloudMessaging.MESSAGE_TYPE_MESSAGE.equals(messageType)) && 
+                extras.containsKey("payload")) {
+            Bundle argsToSend = new Bundle();
+            argsToSend.putString("type", extras.getString("type"));
+            argsToSend.putString("payload", extras.getString("payload"));
+            
+            Intent uiService = new Intent(this, UIService.class);
+            uiService.putExtras(argsToSend);
+            startService(uiService);   
+        }
         
         //Release the wake lock provided by the WakefulBroadcastReceiver.
         GCMBroadcastReceiver.completeWakefulIntent(intent);

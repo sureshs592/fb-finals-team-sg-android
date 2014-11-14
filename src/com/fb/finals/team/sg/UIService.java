@@ -87,7 +87,7 @@ public class UIService extends Service implements OnClickListener {
             uiContainer = new MovieCards(this, payload, frameContent);
         } else if (type.equalsIgnoreCase("url")) {
             uiContainer = new WebViewCard(this, payload, frameContent);
-        } else if (type.equals("fb")) {
+        } else if (type.equals("person")) {
             uiContainer = new FbCard(this, payload, frameContent);
         }
         
@@ -123,6 +123,12 @@ public class UIService extends Service implements OnClickListener {
     
     private void destroyOverlay() {
         windowManager.removeView(overlay);
+        
+        bubble = null;
+        drawer = null;
+        uiContainer = null;
+        frameContent = null;
+        overlay = null;
     }
     
     private void copyText() {
