@@ -26,7 +26,7 @@ public class TestActivity extends Activity {
         serviceToStart.putExtra("type", "url");
 //        serviceToStart.putExtra("payload", "{ \"title\": \"blah blah blah\", \"description\":\"asdf asdf asdf \", \"image\": { \"url\": \"http://content6.flixster.com/movie/11/17/96/11179632_tmp.jpg\"} }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.youtube.com/watch?v=0rhwc5_iWkA\" }");
-        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.google.com/maps/place/1+Hacker+Way,+Menlo+Park,+CA+94025\" }");
+        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.yahoo.com/movies/film/interstellar\" }");
         startService(serviceToStart);
         
         final Thread t = new Thread(new Runnable() {

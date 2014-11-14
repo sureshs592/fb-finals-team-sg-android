@@ -24,15 +24,47 @@
 	        android:layout_height="0dp"
 	        android:layout_weight="1" />
 	    
-	    <TextView
-	        android:id="@+id/btnClose"
-	        android:text="CLOSE"
-	        android:layout_width="wrap_content"
+	    <LinearLayout
+	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:gravity="center"
-	        android:drawableLeft="@drawable/ic_action_discard"
-	        android:textColor="@color/text_gray_title" />
+	        android:orientation="horizontal" >
+	        
+	        <ImageButton
+		        android:id="@+id/btnCollapse"
+		        android:layout_width="48dp"
+		        android:layout_height="48dp"
+		        android:padding="8dp"
+		        android:gravity="center"
+		        android:src="@drawable/ic_action_collapse"
+		        android:background="@null" />
+	        
+	        <View
+	            android:layout_width="0dp"
+	            android:layout_height="match_parent"
+	            android:layout_weight="1" />
+	        
+	        <ImageButton
+		        android:id="@+id/btnClose"
+		        android:layout_width="48dp"
+		        android:layout_height="48dp"
+		        android:padding="8dp"
+		        android:src="@drawable/ic_action_discard"
+		        android:background="@null" />
+	        
+	        <View
+	            android:layout_width="0dp"
+	            android:layout_height="match_parent"
+	            android:layout_weight="1" />
+	        
+	        <ImageButton
+	            android:id="@+id/btnCopy"
+	            android:layout_width="48dp"
+		        android:layout_height="48dp"
+	            android:padding="8dp"
+	            android:src="@drawable/ic_action_copy"
+	            android:background="@null" />
+	        
+	    </LinearLayout>
 	</LinearLayout>
     
 </LinearLayout>
