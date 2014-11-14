@@ -71,6 +71,7 @@ public class UIService extends Service implements OnClickListener {
         tvTitle = (TextView) overlay.findViewById(R.id.tvTitle);
         frameContent = (FrameLayout) overlay.findViewById(R.id.frameContent);
         bubble.setOnClickListener(this);
+        tvTitle.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
         overlay.findViewById(R.id.btnCollapse).setOnClickListener(this);
         overlay.findViewById(R.id.btnCopy).setOnClickListener(this);
@@ -151,6 +152,7 @@ public class UIService extends Service implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.tvTitle:
             case R.id.btnCollapse:
             case R.id.btnBubble:
                 toggleDrawer();
