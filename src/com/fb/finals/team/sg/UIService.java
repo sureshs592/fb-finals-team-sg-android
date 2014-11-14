@@ -68,6 +68,9 @@ public class UIService extends Service implements OnClickListener {
         } else if (type.equalsIgnoreCase("url")) {
             WebViewCard webCard = new WebViewCard(this, payload, frameContent);
             webCard.renderUI();
+        } else if (type.equalsIgnoreCase("deeplink")) {
+            DeepLinkCard webCard = new DeepLinkCard(this, payload, frameContent);
+            webCard.renderUI();
         }
     }
 
