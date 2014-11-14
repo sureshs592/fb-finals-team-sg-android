@@ -7,13 +7,14 @@ import android.os.IBinder;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 
-public class UIService extends Service {
+public class UIService extends Service implements OnClickListener {
     
     private WindowManager windowManager;
-    private View bubble;
+    private View overlay, bubble, drawer;
     
     @Override
     public void onCreate() {
@@ -25,7 +26,12 @@ public class UIService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
-        bubble = inflater.inflate(R.layout.bubble, null);
+        overlay = inflater.inflate(R.layout.overlay_section, null);
+        
+        bubble = overlay.findViewById(R.id.btnBubble);
+        drawer = overlay.findViewById(R.id.llDrawer);
+        
+        bubble.setOnClickListener(this);
         
         WindowManager.LayoutParams lp = new LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -37,18 +43,29 @@ public class UIService extends Service {
         lp.x = 0;
         lp.y = 100;
         
-        windowManager.addView(bubble, lp);
+        windowManager.addView(overlay, lp);
         
         return START_NOT_STICKY;
     }
 
     /**
-     * UNUSED
+     * UNUSED. We are not using this stuff
      */
     @Override
-    public IBinder onBind(Intent arg0) {
-        //We're not using this
-        return null;
+    public IBinder onBind(Intent arg0) { return null; }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btnBubble:
+                toggleDrawer();
+                break;
+        }
+    }
+    
+    private void toggleDrawer() {
+        boolean isVisible = drawer.isShown();
+        drawer.setVisibility((isVisible) ? View.GONE : View.VISIBLE);
     }
 
 }
