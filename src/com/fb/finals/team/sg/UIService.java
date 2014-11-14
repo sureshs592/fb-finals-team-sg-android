@@ -5,19 +5,20 @@ import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.IBinder;
-import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
-import android.widget.TextView;
+import android.widget.FrameLayout;
 
 public class UIService extends Service implements OnClickListener {
     
     private WindowManager windowManager;
     private View overlay, bubble, drawer;
+    private FrameLayout frameContent;
     
     @Override
     public void onCreate() {
@@ -32,12 +33,15 @@ public class UIService extends Service implements OnClickListener {
         Bundle extras = intent.getExtras();
         String type = extras.getString("type");
         String payload = extras.getString("payload");
+        Log.v("payload", payload);
         
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         overlay = inflater.inflate(R.layout.overlay_section, null);
         
         bubble = overlay.findViewById(R.id.btnBubble);
         drawer = overlay.findViewById(R.id.llDrawer);
+        frameContent = (FrameLayout) overlay.findViewById(R.id.frameContent);
+        chooseUIToDisplay(type, payload);
         
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
@@ -55,6 +59,13 @@ public class UIService extends Service implements OnClickListener {
         windowManager.addView(overlay, lp);
         
         return START_NOT_STICKY;
+    }
+    
+    private void chooseUIToDisplay(String type, String payload) {
+        if (type.equalsIgnoreCase("movie")) {
+            MovieCards movieCards = new MovieCards(this, payload, frameContent);
+            movieCards.renderUI();
+        }
     }
 
     /**
