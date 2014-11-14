@@ -20,12 +20,9 @@ public class TestActivity extends Activity {
         
 //        registerDeviceForGCM();
         
-        //Prepare a dummy payload and trigger the service.
-        //This will eventually by replaced. The service will be triggered through GCM.
-        String testText = "This is a dummy payload to displayed on the phone";
-        
         Intent serviceToStart = new Intent(this, UIService.class);
-        serviceToStart.putExtra("text", testText);
+        serviceToStart.putExtra("type", "movie");
+        serviceToStart.putExtra("payload", "{ title: 'blah blah blah' }");
         startService(serviceToStart);
     }
     

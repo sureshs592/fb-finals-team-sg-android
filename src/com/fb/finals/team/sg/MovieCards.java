@@ -16,7 +16,7 @@ public class MovieCards {
     private JsonNode json;
     
     public MovieCards(Context context, String jsonString, FrameLayout baseView) {
-        view = LayoutInflater.from(context).inflate(R.layout.content_movie, baseView);
+        view = LayoutInflater.from(context).inflate(R.layout.content_movie, baseView, false);
         baseView.addView(view);
         try {
             json = new ObjectMapper().readTree(jsonString);
