@@ -15,12 +15,14 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class UIService extends Service implements OnClickListener {
     
     private WindowManager windowManager;
     private View overlay, bubble, drawer;
+    private TextView tvTitle;
     private FrameLayout frameContent;
     private UIContainer uiContainer;
     
@@ -44,6 +46,7 @@ public class UIService extends Service implements OnClickListener {
         Log.v("payload", payload);
         
         chooseUIToDisplay(type, payload);
+        displayTitle(extras.getString("title"));
         
         return START_NOT_STICKY;
     }
@@ -63,6 +66,7 @@ public class UIService extends Service implements OnClickListener {
         
         bubble = overlay.findViewById(R.id.btnBubble);
         drawer = overlay.findViewById(R.id.llDrawer);
+        tvTitle = (TextView) overlay.findViewById(R.id.tvTitle);
         frameContent = (FrameLayout) overlay.findViewById(R.id.frameContent);
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
@@ -80,6 +84,21 @@ public class UIService extends Service implements OnClickListener {
         lp.y = 100;
         
         windowManager.addView(overlay, lp);
+    }
+    
+    private void displayTitle(String title) {
+        if (title == null || title.isEmpty()) {
+            return;
+        }
+        
+        tvTitle.setText(title);
+        tvTitle.setVisibility(View.VISIBLE);
+        tvTitle.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                tvTitle.setVisibility(View.GONE);
+            }
+        }, 5000);
     }
     
     private void chooseUIToDisplay(String type, String payload) {

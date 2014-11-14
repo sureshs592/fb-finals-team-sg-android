@@ -30,6 +30,7 @@ public class GCMService extends IntentService {
             Bundle argsToSend = new Bundle();
             argsToSend.putString("type", extras.getString("type"));
             argsToSend.putString("payload", extras.getString("payload"));
+            argsToSend.putString("title", extras.getString("title"));
             
             Intent uiService = new Intent(this, UIService.class);
             uiService.putExtras(argsToSend);

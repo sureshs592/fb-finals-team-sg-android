@@ -24,6 +24,7 @@ public class TestActivity extends Activity {
         
         Intent serviceToStart = new Intent(this, UIService.class);
         serviceToStart.putExtra("type", "person");
+        serviceToStart.putExtra("title", "Testing testing testing");
 //        serviceToStart.putExtra("payload", "{ \"title\": \"blah blah blah\", \"description\":\"asdf asdf asdf \", \"image\": { \"url\": \"http://content6.flixster.com/movie/11/17/96/11179632_tmp.jpg\"} }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.youtube.com/watch?v=0rhwc5_iWkA\" }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.yahoo.com/movies/film/interstellar\" }");

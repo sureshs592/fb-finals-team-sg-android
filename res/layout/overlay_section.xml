@@ -5,8 +5,7 @@
     android:orientation="vertical"
     android:padding="16dp" >
     
-	<include layout="@layout/bubble"
-	    android:id="@+id/btnBubble" />
+	<include layout="@layout/bubble" />
 	
 	<LinearLayout
 	    android:id="@+id/llDrawer"
