@@ -98,7 +98,7 @@ public class UIService extends Service implements OnClickListener {
             public void run() {
                 tvTitle.setVisibility(View.GONE);
             }
-        }, 5000);
+        }, 4000);
     }
     
     private void chooseUIToDisplay(String type, String payload) {

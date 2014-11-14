@@ -23,9 +23,10 @@
             android:layout_toRightOf="@+id/btnBubble"
             android:layout_marginLeft="8dp"
             android:padding="8dp"
+            android:gravity="center_vertical"
             android:layout_centerVertical="true"
             android:textSize="@dimen/textSize_large"
-            android:background="#99000000"
+            android:background="@drawable/title_bg"
             android:textColor="@color/white" />
     </RelativeLayout>
 
