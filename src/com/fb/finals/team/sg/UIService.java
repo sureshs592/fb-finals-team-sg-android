@@ -1,5 +1,7 @@
 package com.fb.finals.team.sg;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.app.Service;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -46,7 +48,7 @@ public class UIService extends Service implements OnClickListener {
         Log.v("payload", payload);
         
         chooseUIToDisplay(type, payload);
-        displayTitle(extras.getString("title"));
+        displayHeader(extras.getString("title"));
         
         return START_NOT_STICKY;
     }
@@ -86,19 +88,46 @@ public class UIService extends Service implements OnClickListener {
         windowManager.addView(overlay, lp);
     }
     
-    private void displayTitle(String title) {
+    private void displayHeader(String title) {
+        if (!bubble.isShown()) {
+            bubble.setAlpha(0.0f);
+            bubble.setVisibility(View.VISIBLE);
+            
+            bubble.animate()
+            .alpha(1f)
+            .setDuration(getResources().getInteger(
+                    android.R.integer.config_shortAnimTime))
+            .setListener(null);
+        }
         if (title == null || title.isEmpty()) {
             return;
         }
         
         tvTitle.setText(title);
+        tvTitle.setAlpha(0.0f);
         tvTitle.setVisibility(View.VISIBLE);
+        
+        tvTitle.animate()
+            .alpha(1f)
+            .setDuration(getResources().getInteger(
+                    android.R.integer.config_shortAnimTime))
+            .setListener(null);
+        
         tvTitle.postDelayed(new Runnable() {
             @Override
             public void run() {
-                tvTitle.setVisibility(View.GONE);
+                tvTitle.animate()
+                .alpha(0f)
+                .setDuration(getResources().getInteger(
+                        android.R.integer.config_shortAnimTime))
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        tvTitle.setVisibility(View.GONE);
+                    }
+                });
             }
-        }, 4000);
+        }, 5000);
     }
     
     private void chooseUIToDisplay(String type, String payload) {

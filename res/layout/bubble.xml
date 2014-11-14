@@ -5,11 +5,11 @@
     
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/headerSection" >
+        android:layout_height="wrap_content" >
 
         <TextView
             android:id="@+id/tvTitle"
+            android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
             android:background="@drawable/title_bg"
@@ -24,6 +24,7 @@
         
         <android.widget.IconTextView 
             android:id="@+id/btnBubble"
+            android:visibility="gone"
 		    android:text="{fa-flash}"
 		    android:layout_width="48dp"
 		    android:layout_height="48dp"
