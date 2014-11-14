@@ -5,7 +5,23 @@
     
     <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:id="@+id/headerSection" >
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:background="@drawable/title_bg"
+            android:gravity="center_vertical"
+            android:paddingBottom="8dp"
+            android:paddingLeft="56dp"
+            android:paddingRight="32dp"
+            android:paddingTop="8dp"
+            android:text="test test test"
+            android:textColor="@color/white"
+            android:textSize="@dimen/textSize_large" />
+        
         <android.widget.IconTextView 
             android:id="@+id/btnBubble"
 		    android:text="{fa-flash}"
@@ -15,19 +31,7 @@
 		    android:gravity="center"
 		    android:background="@drawable/bubble_bg"
 		    android:textColor="@android:color/white" />
-        
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/btnBubble"
-            android:layout_marginLeft="8dp"
-            android:padding="8dp"
-            android:gravity="center_vertical"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/textSize_large"
-            android:background="@drawable/title_bg"
-            android:textColor="@color/white" />
+
     </RelativeLayout>
 
 </FrameLayout>

@@ -67,8 +67,7 @@ public class FbCard implements UIContainer, OnClickListener {
     @Override
     public String getTextForClipboard() {
         StringBuilder text = new StringBuilder();
-        text.append(json.get("title").asText()).append(" - ");
-        text.append(json.get("description").asText());
+        text.append(json.get("title").asText());
         return text.toString();
     }
 
