@@ -1,6 +1,8 @@
 package com.fb.finals.team.sg;
 
 import android.app.Service;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Intent;
 import android.graphics.PixelFormat;
 import android.os.Bundle;
@@ -19,6 +21,7 @@ public class UIService extends Service implements OnClickListener {
     private WindowManager windowManager;
     private View overlay, bubble, drawer;
     private FrameLayout frameContent;
+    private UIContainer uiContainer;
     
     @Override
     public void onCreate() {
@@ -62,6 +65,8 @@ public class UIService extends Service implements OnClickListener {
         frameContent = (FrameLayout) overlay.findViewById(R.id.frameContent);
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
+        overlay.findViewById(R.id.btnCollapse).setOnClickListener(this);
+        overlay.findViewById(R.id.btnCopy).setOnClickListener(this);
         
         WindowManager.LayoutParams lp = new LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -78,15 +83,12 @@ public class UIService extends Service implements OnClickListener {
     
     private void chooseUIToDisplay(String type, String payload) {
         if (type.equalsIgnoreCase("movie")) {
-            MovieCards movieCards = new MovieCards(this, payload, frameContent);
-            movieCards.renderUI();
+            uiContainer = new MovieCards(this, payload, frameContent);
         } else if (type.equalsIgnoreCase("url")) {
-            WebViewCard webCard = new WebViewCard(this, payload, frameContent);
-            webCard.renderUI();
-        } else if (type.equalsIgnoreCase("deeplink")) {
-            DeepLinkCard webCard = new DeepLinkCard(this, payload, frameContent);
-            webCard.renderUI();
+            uiContainer = new WebViewCard(this, payload, frameContent);
         }
+        
+        uiContainer.renderUI();
     }
 
     /**
@@ -98,11 +100,16 @@ public class UIService extends Service implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
+            case R.id.btnCollapse:
             case R.id.btnBubble:
                 toggleDrawer();
                 break;
             case R.id.btnClose:
                 destroyOverlay();
+                break;
+            case R.id.btnCopy:
+                copyText();
+                break;
         }
     }
     
@@ -113,6 +120,12 @@ public class UIService extends Service implements OnClickListener {
     
     private void destroyOverlay() {
         windowManager.removeView(overlay);
+    }
+    
+    private void copyText() {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("info", uiContainer.getTextForClipboard());
+        clipboard.setPrimaryClip(clip);
     }
 
 }

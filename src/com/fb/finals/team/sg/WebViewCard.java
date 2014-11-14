@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class WebViewCard {
+public class WebViewCard implements UIContainer {
     
     private View view;
     private JsonNode json;
@@ -27,6 +27,7 @@ public class WebViewCard {
         }
     }
 
+    @Override
     public void renderUI() {
         String url = json.get("url").asText();
         WebView webView = (WebView) view.findViewById(R.id.webview);
@@ -37,6 +38,11 @@ public class WebViewCard {
         settings.setLoadWithOverviewMode(true);
         settings.setBuiltInZoomControls(true);
         webView.setWebViewClient(new WebViewClient()); //Workaround to prevent the app from crashing when clicking on a link
+    }
+
+    @Override
+    public String getTextForClipboard() {
+        return json.get("url").asText();
     }
     
 //    private int getScale(){

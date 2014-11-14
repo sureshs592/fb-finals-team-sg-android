@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
-public class MovieCards {
+public class MovieCards implements UIContainer {
     
     private View view;
     private JsonNode json;
@@ -27,6 +27,7 @@ public class MovieCards {
         }
     }
 
+    @Override
     public void renderUI() {
         //Cover image stuff
         String url = json.get("image").get("url").asText();
@@ -40,6 +41,14 @@ public class MovieCards {
         
         tvMovieTitle.setText(json.get("title").asText());
         tvMovieDescription.setText(json.get("description").asText());
+    }
+
+    @Override
+    public String getTextForClipboard() {
+        StringBuilder text = new StringBuilder();
+        text.append(json.get("title").asText()).append(" - ");
+        text.append(json.get("description").asText());
+        return text.toString();
     }
 
 }
