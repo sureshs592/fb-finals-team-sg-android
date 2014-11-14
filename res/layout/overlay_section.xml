@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="16dp" >
     
 	<include layout="@layout/bubble"
 	    android:id="@+id/btnBubble" />
@@ -11,15 +12,15 @@
 	    android:id="@+id/llDrawer"
 	    android:orientation="vertical"
 	    android:layout_marginTop="8dp"
-	    android:layout_width="300dp"
+	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:visibility="gone"
-	    android:padding="16dp"
-	    android:background="@android:color/white" >
+	    android:padding="8dp"
+	    android:background="@drawable/drawer_bg" >
 	    
 	    <FrameLayout
 	        android:id="@+id/frameContent"
-	        android:layout_width="match_parent"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content" />
 	    
 	    <TextView
@@ -30,7 +31,7 @@
 	        android:padding="8dp"
 	        android:gravity="center"
 	        android:drawableLeft="@drawable/ic_action_discard"
-	        android:textColor="@color/text_gray" />
+	        android:textColor="@color/text_gray_title" />
 	</LinearLayout>
     
 </LinearLayout>

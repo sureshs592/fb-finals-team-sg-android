@@ -53,7 +53,7 @@ public class UIService extends Service implements OnClickListener {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         lp.gravity = Gravity.TOP | Gravity.LEFT;
-        lp.x = 10;
+        lp.x = 0;
         lp.y = 100;
         
         windowManager.addView(overlay, lp);

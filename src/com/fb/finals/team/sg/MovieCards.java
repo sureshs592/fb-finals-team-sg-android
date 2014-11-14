@@ -27,7 +27,10 @@ public class MovieCards {
 
     public void renderUI() {
         TextView tvMovieTitle = (TextView) view.findViewById(R.id.tvMovieTitle);
+        TextView tvMovieDescription = (TextView) view.findViewById(R.id.tvMovieDescription);
+        
         tvMovieTitle.setText(json.get("title").asText());
+        tvMovieDescription.setText(json.get("description").asText());
     }
 
 }
