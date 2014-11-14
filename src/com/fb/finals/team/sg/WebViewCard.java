@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -33,6 +34,17 @@ public class WebViewCard {
         WebSettings settings = webView.getSettings();
         settings.setJavaScriptEnabled(true);
         settings.setUseWideViewPort(true);
+        settings.setLoadWithOverviewMode(true);
+        settings.setBuiltInZoomControls(true);
+        webView.setWebViewClient(new WebViewClient()); //Workaround to prevent the app from crashing when clicking on a link
     }
+    
+//    private int getScale(){
+//        Display display = ((WindowManager) getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay(); 
+//        int width = display.getWidth(); 
+//        Double val = new Double(width)/new Double(PIC_WIDTH);
+//        val = val * 100d;
+//        return val.intValue();
+//    }
 
 }
