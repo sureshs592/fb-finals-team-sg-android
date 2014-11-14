@@ -29,7 +29,7 @@ public class TestActivity extends Activity {
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.yahoo.com/movies/film/interstellar\" }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.google.com/maps/place/1+Hacker+Way,+Menlo+Park\" }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://p.scdn.co/mp3-preview/f454c8224828e21fa146af84916fd22cb89cedc6\" }");
-        serviceToStart.putExtra("payload", "{ \"image\": { \"url\": \"http://graph.facebook.com/218471/picture?height=200\" }, \"title\": \"Paul Tarjan\", \"currentLocation\": \"Lives in Palo Alto, California\", \"hometown\": \"From Calgary, Alberta\" } ");
+        serviceToStart.putExtra("payload", "{ \"image\": { \"url\": \"http://graph.facebook.com/218471/picture?height=200\" }, \"title\": \"Paul Tarjan\", \"currentLocation\": \"Lives in Palo Alto, California\", \"hometown\": \"From Calgary, Alberta\", \"facebookID\": \"218471\" } ");
         startService(serviceToStart);
         
 //        final Thread t = new Thread(new Runnable() {
