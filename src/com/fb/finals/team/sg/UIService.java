@@ -15,6 +15,7 @@ import android.view.View.OnClickListener;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 public class UIService extends Service implements OnClickListener {
     
@@ -126,6 +127,8 @@ public class UIService extends Service implements OnClickListener {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("info", uiContainer.getTextForClipboard());
         clipboard.setPrimaryClip(clip);
+        Toast.makeText(getApplicationContext(), "Copied to clipboard!", Toast.LENGTH_SHORT).show();
+        toggleDrawer();
     }
 
 }
