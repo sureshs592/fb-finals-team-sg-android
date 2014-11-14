@@ -41,9 +41,6 @@ public class UIService extends Service implements OnClickListener {
         
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
-        TextView tvContent = (TextView) overlay.findViewById(R.id.tvContent);
-        tvContent.setText(payload);
-        tvContent.setMovementMethod(new ScrollingMovementMethod());
         
         WindowManager.LayoutParams lp = new LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
