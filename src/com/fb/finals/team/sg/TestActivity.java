@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -17,7 +18,7 @@ public class TestActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        registerDeviceForGCM();
+//        registerDeviceForGCM();
         
         //Prepare a dummy payload and trigger the service.
         //This will eventually by replaced. The service will be triggered through GCM.

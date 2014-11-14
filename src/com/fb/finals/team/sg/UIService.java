@@ -3,7 +3,9 @@ package com.fb.finals.team.sg;
 import android.app.Service;
 import android.content.Intent;
 import android.graphics.PixelFormat;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.text.method.ScrollingMovementMethod;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +28,11 @@ public class UIService extends Service implements OnClickListener {
     
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        //Read information from the push notification
+        Bundle extras = intent.getExtras();
+        String type = extras.getString("type");
+        String payload = extras.getString("payload");
+        
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         overlay = inflater.inflate(R.layout.overlay_section, null);
         
@@ -34,10 +41,9 @@ public class UIService extends Service implements OnClickListener {
         
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
-        
-        //Read the text from the intent
-        String text = intent.getStringExtra("text");
-        ((TextView)overlay.findViewById(R.id.tvContent)).setText(text);
+        TextView tvContent = (TextView) overlay.findViewById(R.id.tvContent);
+        tvContent.setText(payload);
+        tvContent.setMovementMethod(new ScrollingMovementMethod());
         
         WindowManager.LayoutParams lp = new LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -46,7 +52,7 @@ public class UIService extends Service implements OnClickListener {
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
         lp.gravity = Gravity.TOP | Gravity.LEFT;
-        lp.x = 0;
+        lp.x = 10;
         lp.y = 100;
         
         windowManager.addView(overlay, lp);
