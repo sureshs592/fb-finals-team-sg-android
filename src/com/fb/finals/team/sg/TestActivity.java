@@ -22,7 +22,7 @@ public class TestActivity extends Activity {
         
         Intent serviceToStart = new Intent(this, UIService.class);
         serviceToStart.putExtra("type", "movie");
-        serviceToStart.putExtra("payload", "{ \"title\": \"blah blah blah\" }");
+        serviceToStart.putExtra("payload", "{ \"title\": \"blah blah blah\", \"description\":\"asdf asdf asdf \", \"url\": \"http://content6.flixster.com/movie/11/17/96/11179632_tmb.jpg\" }");
         startService(serviceToStart);
     }
     
