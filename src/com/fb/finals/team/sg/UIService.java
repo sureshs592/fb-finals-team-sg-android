@@ -32,6 +32,7 @@ public class UIService extends Service implements OnClickListener {
         drawer = overlay.findViewById(R.id.llDrawer);
         
         bubble.setOnClickListener(this);
+        overlay.findViewById(R.id.btnClose).setOnClickListener(this);
         
         WindowManager.LayoutParams lp = new LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
@@ -60,12 +61,18 @@ public class UIService extends Service implements OnClickListener {
             case R.id.btnBubble:
                 toggleDrawer();
                 break;
+            case R.id.btnClose:
+                destroyOverlay();
         }
     }
     
     private void toggleDrawer() {
         boolean isVisible = drawer.isShown();
         drawer.setVisibility((isVisible) ? View.GONE : View.VISIBLE);
+    }
+    
+    private void destroyOverlay() {
+        windowManager.removeView(overlay);
     }
 
 }
