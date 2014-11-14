@@ -65,6 +65,9 @@ public class UIService extends Service implements OnClickListener {
         if (type.equalsIgnoreCase("movie")) {
             MovieCards movieCards = new MovieCards(this, payload, frameContent);
             movieCards.renderUI();
+        } else if (type.equalsIgnoreCase("url")) {
+            WebViewCard webCard = new WebViewCard(this, payload, frameContent);
+            webCard.renderUI();
         }
     }
 
