@@ -35,6 +35,24 @@ public class FbCard implements UIContainer {
         
         TextView fullName = (TextView) view.findViewById(R.id.tvFullName);
         fullName.setText(json.get("title").asText());
+        
+        //Current location stuff
+        if (json.has("currentLocation")) {
+            TextView currentLocation = (TextView) view.findViewById(R.id.tvCurrentLocation);
+            currentLocation.setText(json.get("currentLocation").asText());    
+        } else {
+            view.findViewById(R.id.tvCurrentLocationLabel).setVisibility(View.GONE);
+            view.findViewById(R.id.tvCurrentLocation).setVisibility(View.GONE);
+        }
+        
+        //Hometown stuff
+        if (json.has("hometown")) {
+            TextView hometown = (TextView) view.findViewById(R.id.tvFrom);
+            hometown.setText(json.get("hometown").asText());
+        } else {
+            view.findViewById(R.id.tvFromLabel).setVisibility(View.GONE);
+            view.findViewById(R.id.tvFrom).setVisibility(View.GONE);
+        }
     }
 
     @Override

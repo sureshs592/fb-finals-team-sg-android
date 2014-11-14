@@ -48,13 +48,57 @@
                         android:maxLines="1"
                         android:ellipsize="end"
                         android:padding="8dp" />
+                    
+                    <IconTextView
+                        android:id="@+id/fbLogo"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentRight="true"
+                        android:padding="4dp"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSize_xLarge"
+                        android:text="{fa-facebook}" />
+                        
                 </RelativeLayout>
 	            
 	            <TextView
-	                android:id="@+id/tvMovieDescription"
+	                android:id="@+id/tvCurrentLocationLabel"
+	                android:text="Current Location"
 	                android:layout_width="match_parent"
 	                android:layout_height="wrap_content"
 	                android:layout_marginTop="8dp"
+	                android:layout_marginLeft="8dp"
+	                android:textSize="@dimen/textSize_large"
+	                android:textColor="@color/text_gray_title" />
+	            
+	            <TextView
+	                android:id="@+id/tvCurrentLocation"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="4dp"
+	                android:layout_marginLeft="8dp"
+	                android:textSize="@dimen/textSize_normal"
+	                android:textColor="@color/text_gray_content" />
+	            
+	            <TextView
+	                android:id="@+id/tvFromLabel"
+	                android:text="Hometown"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="8dp"
+	                android:layout_marginLeft="8dp"
+	                android:textSize="@dimen/textSize_large"
+	                android:textColor="@color/text_gray_title" />
+	            
+	            <TextView
+	                android:id="@+id/tvFrom"
+	                android:layout_width="match_parent"
+	                android:layout_height="wrap_content"
+	                android:layout_marginTop="4dp"
+	                android:layout_marginLeft="8dp"
+	                android:layout_marginBottom="4dp"
 	                android:textSize="@dimen/textSize_normal"
 	                android:textColor="@color/text_gray_content" />
             </LinearLayout>
