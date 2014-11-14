@@ -87,6 +87,8 @@ public class UIService extends Service implements OnClickListener {
             uiContainer = new MovieCards(this, payload, frameContent);
         } else if (type.equalsIgnoreCase("url")) {
             uiContainer = new WebViewCard(this, payload, frameContent);
+        } else if (type.equals("fb")) {
+            uiContainer = new FbCard(this, payload, frameContent);
         }
         
         uiContainer.renderUI();

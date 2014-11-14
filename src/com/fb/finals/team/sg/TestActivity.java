@@ -23,12 +23,13 @@ public class TestActivity extends Activity {
 //        registerDeviceForGCM();
         
         Intent serviceToStart = new Intent(this, UIService.class);
-        serviceToStart.putExtra("type", "url");
+        serviceToStart.putExtra("type", "fb");
 //        serviceToStart.putExtra("payload", "{ \"title\": \"blah blah blah\", \"description\":\"asdf asdf asdf \", \"image\": { \"url\": \"http://content6.flixster.com/movie/11/17/96/11179632_tmp.jpg\"} }");
-        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.youtube.com/watch?v=0rhwc5_iWkA\" }");
+//        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.youtube.com/watch?v=0rhwc5_iWkA\" }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.yahoo.com/movies/film/interstellar\" }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.google.com/maps/place/1+Hacker+Way,+Menlo+Park\" }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://p.scdn.co/mp3-preview/f454c8224828e21fa146af84916fd22cb89cedc6\" }");
+        serviceToStart.putExtra("payload", "{ \"image\": { \"url\": \"http://graph.facebook.com/218471/picture?height=200\" }, \"title\": \"Paul Tarjan\" } ");
         startService(serviceToStart);
         
 //        final Thread t = new Thread(new Runnable() {
