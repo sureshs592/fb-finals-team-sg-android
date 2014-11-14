@@ -9,6 +9,8 @@ import android.util.Log;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import java.io.IOException;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class TestActivity extends Activity {
     
@@ -25,6 +27,28 @@ public class TestActivity extends Activity {
 //        serviceToStart.putExtra("payload", "{ \"title\": \"blah blah blah\", \"description\":\"asdf asdf asdf \", \"image\": { \"url\": \"http://content6.flixster.com/movie/11/17/96/11179632_tmp.jpg\"} }");
 //        serviceToStart.putExtra("payload", "{ \"url\": \"https://www.youtube.com/watch?v=0rhwc5_iWkA\" }");
         serviceToStart.putExtra("payload", "{ \"url\": \"https://www.google.com/maps/place/1+Hacker+Way,+Menlo+Park,+CA+94025\" }");
+        startService(serviceToStart);
+        
+        final Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                startService("movie", "{ \"title\": \"blah blah blah\", \"description\":\"asdf asdf asdf \", \"image\": { \"url\": \"http://content6.flixster.com/movie/11/17/96/11179632_tmp.jpg\"} }");
+            }
+        });
+        
+        final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(5);
+        executor.schedule(new Runnable() {
+                @Override
+                public void run() {
+                    t.start();
+                }
+            }, 10, TimeUnit.SECONDS);
+    }
+    
+    private void startService(String type, String payload) {
+        Intent serviceToStart = new Intent(this, UIService.class);
+        serviceToStart.putExtra("type", type);
+        serviceToStart.putExtra("payload", payload);
         startService(serviceToStart);
     }
     

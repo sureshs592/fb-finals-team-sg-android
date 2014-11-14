@@ -29,20 +29,37 @@ public class UIService extends Service implements OnClickListener {
     
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        //Clear existing information from the drawer. Setup UI if required
+        boolean viewsExist = clearExistingInfo();
+        if (!viewsExist) inflateAndSetupUI(); 
+        
         //Read information from the push notification
         Bundle extras = intent.getExtras();
         String type = extras.getString("type");
         String payload = extras.getString("payload");
         Log.v("payload", payload);
         
+        chooseUIToDisplay(type, payload);
+        
+        return START_NOT_STICKY;
+    }
+    
+    private boolean clearExistingInfo() {
+        if (frameContent != null) {
+            frameContent.removeAllViews();
+            return true;
+        }
+        
+        return false;
+    }
+    
+    private void inflateAndSetupUI() {
         LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
         overlay = inflater.inflate(R.layout.overlay_section, null);
         
         bubble = overlay.findViewById(R.id.btnBubble);
         drawer = overlay.findViewById(R.id.llDrawer);
         frameContent = (FrameLayout) overlay.findViewById(R.id.frameContent);
-        chooseUIToDisplay(type, payload);
-        
         bubble.setOnClickListener(this);
         overlay.findViewById(R.id.btnClose).setOnClickListener(this);
         
@@ -57,8 +74,6 @@ public class UIService extends Service implements OnClickListener {
         lp.y = 100;
         
         windowManager.addView(overlay, lp);
-        
-        return START_NOT_STICKY;
     }
     
     private void chooseUIToDisplay(String type, String payload) {
