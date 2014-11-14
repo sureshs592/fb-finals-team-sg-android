@@ -5,10 +5,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MovieCards {
     
@@ -26,6 +28,12 @@ public class MovieCards {
     }
 
     public void renderUI() {
+        //Cover image stuff
+        String url = json.get("image").get("url").asText();
+        ImageView poster = (ImageView) view.findViewById(R.id.imgPoster);
+        ImageLoader.getInstance().displayImage(url, poster);
+        
+        //Title + description cards
         TextView tvMovieTitle = (TextView) view.findViewById(R.id.tvMovieTitle);
         TextView tvMovieDescription = (TextView) view.findViewById(R.id.tvMovieDescription);
         
