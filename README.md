@@ -3,7 +3,7 @@
 ### Project: Telepathy
 
 ## Introduction
-We've all been in situations when we lack information about a topic while we're messaging on chat applications (WhatsApp, Messenger etc). Typically, we would minimize the chat application to search for more information, before resuming the conversation and sharing that information with the other participant(s). This often requires repeated switching between apps to acquire all the details you need for the conversation.
+We've all been in situations when we lack information about a topic while we're messaging in chat applications (WhatsApp, Messenger etc). Typically, we would minimize the chat application to search for more information, before resuming the conversation and sharing that information with the other participant(s). This often requires repeated switching between apps to acquire all the details you need for the conversation.
 
 To enable a user to enhance their conversation with minimal effort and distraction, we built Telepathy, a smart chat assistant for the Android OS that utilizes Facebook messages. Telepathy serves the user additional information about the topic being discussed in a timely manner.
 
