@@ -29,12 +29,12 @@ their area. Writing something like ***"What time would you suggest?"*** would pr
 <img src="https://raw.githubusercontent.com/sureshs592/fb-finals-team-sg-android/master/readme%20screens/2014-11-18%2005.33.02.png" width="300px"/>
 
 ### Scenario: Location
-As participants decide on a location, Telepathy is able to provide previews of the location on Google Maps. Typing an address or a message such as "Shall we meet at 1 Hacker Way (Facebook HQ)" would display an interactive map:
+As participants decide on a location, Telepathy is able to provide previews of the location on Google Maps. Typing an address or a message such as ***"Shall we meet at 1 Hacker Way (Facebook HQ)"*** would display an interactive map:
 
 <img src="https://raw.githubusercontent.com/sureshs592/fb-finals-team-sg-android/master/readme%20screens/2014-11-18%2005.40.46.png" width="300px"/>
 
 ### Scenario: Facebook Event Attendee
-Telepathy also indexes and utilizes information from Facebook Graph. If the user met someone at an event (organised on Facebook) and was trying to recollect who that person was, writing something like "I met this guy at the hackathon yesterday. He was from Singapore" will display the following information, with an additional link to visit the Facebook profile in question:
+Telepathy also indexes and utilizes information from Facebook Graph. If the user met someone at an event (organised on Facebook) and was trying to recollect who that person was, writing something like ***"I met this guy at the hackathon yesterday. He was from Singapore"*** will display the following information, with an additional link to visit the Facebook profile in question:
 
 <img src="https://raw.githubusercontent.com/sureshs592/fb-finals-team-sg-android/master/readme%20screens/2014-11-18%2005.51.20.png" width="300px"/>
 
